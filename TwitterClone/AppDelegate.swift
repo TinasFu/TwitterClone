@@ -13,6 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    /* Day 3 class 8?*/
+    // a singleton networkController it's a global constant
+    
+    let networkController = NetworkController()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
