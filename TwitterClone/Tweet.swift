@@ -15,10 +15,12 @@ class Tweet {
     var text : String
     var avatarImage : UIImage
     var id : String
+    var screenName : String
     
     var favNumber : Int?
     var reTweetCount : Int?
     var userName : String
+    var imageURL : String
     
     
     
@@ -27,6 +29,7 @@ class Tweet {
         
         // use "let" when you can instead of var
         let userDict = tweetInfo["user"] as NSDictionary
+        self.imageURL = userDict["profile_image_url"] as String
         let url  = NSURL(string: userDict["profile_image_url"] as String)
         
         //var url = NSURL.URLWithString(userDict["profile_image_url"] as String)
@@ -35,6 +38,7 @@ class Tweet {
         self.id = tweetInfo["id_str"] as String
         self.reTweetCount = tweetInfo["retweet_count"] as? Int
         self.userName = userDict["name"] as String
+        self.screenName = userDict["screen_name"] as String
         
 //        if let numFav = tweetInfo["favourites_count"] as? NSNumber {
 //            self.favNumber = numFav

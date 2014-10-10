@@ -11,7 +11,7 @@ import Accounts
 import Social
 
 
-class SingleTweetViewController: UIViewController, UIApplicationDelegate {
+class SingleTweetViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var tweet : Tweet!
     var tweets : [Tweet]?
@@ -56,6 +56,11 @@ class SingleTweetViewController: UIViewController, UIApplicationDelegate {
         self.singleTweetProfileImageView?.image = self.tweet.avatarImage
         self.singleTweetUserNameLabelView.text = self.tweet.userName
         self.singleTweetRetweetNumberView.text = self.tweet.reTweetCount?.description
+        
+        // when click on the target, add gesture recognizer
+        let pressGesture = UITapGestureRecognizer(target: self, action: "toUserView:")
+        pressGesture.delegate = self
+        self.singleTweetProfileImageView.addGestureRecognizer(pressGesture)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,15 +72,23 @@ class SingleTweetViewController: UIViewController, UIApplicationDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: UIGesture
+    
+    func toUserView(gesture : UITapGestureRecognizer) {
+        let destinationVC = self.storyboard?.instantiateViewControllerWithIdentifier("SINGLEUSER") as SingleUserViewController
+        destinationVC.tweet = self.tweet
+        self.navigationController?.pushViewController(destinationVC, animated: true)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+
+
+    
+    
+    
+    
+    
+    
 
 }

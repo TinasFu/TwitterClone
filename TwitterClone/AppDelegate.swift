@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    /* Day 3 class 8?*/
+    /* Day 3 class */
     // a singleton networkController it's a global constant
     
     let networkController = NetworkController()
